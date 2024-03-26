@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <section class='bg-primary_black min-h-screen py-20 md:py-32 flex-col flex items-center' style="background-image: url('{% static 'images/background_ntflix.jpg' %}');">
+        <div class="flex flex-wrap justify-center  w-10/12  md:w-6/12">
+            <form method="post" class="w-full md:w-8/12 bg-gray-900 p-5 rounded-lg">
+                {% csrf_token %}
+                <h1 class="text-4xl text-center text-gray-100 font-medium">
+                    Создать профиль
+                </h1>
+                {% for field in form %}
+                <div class="my-4"> 
+                    <Label class='text-lg text-gray-200 font-medium mb-3'>
+                        {{ field.label }}
+                    </Label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+<!--                <div class="my-4"> -->
+<!--                    <Label class='text-lg text-gray-200 font-medium mb-3'>-->
+<!--                        Maturity Level-->
+<!--                    </Label>-->
+<!--                    <select class="p-2 bg-gray-500 rounded-sm text-gray-200 outline-none block w-full"  name="profile_name" id="id_email" >-->
+<!--                        <option value="All">All</option>-->
+<!--                        <option value="Kids">Kids</option>-->
+<!--                       -->
+<!--                    </select>-->
+<!--                </div>-->
+                <div class="flex justify-center items-center">
+                    <button class="px-4 py-2 rounded-md outline-none bg-primary_red text-gray-100">Создать профиль</button>
+                </div>
+            </form> 
+        </div>
+    </section>
+{% endblock %}
