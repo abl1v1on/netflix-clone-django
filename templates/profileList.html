@@ -16,7 +16,7 @@
             <a href="">
                 <div class="w-32 h-32 m-4  bg-blue-500 rounded-md cursor-pointer justify-center items-center flex-col flex">
                     <p style="font-weight: 650;" class="text-6xl">{{ profile.name.0 }}</p>
-                    <p>{{ profile.name }}</p>
+                    <p>{{ profile.name|truncatechars:14 }}</p>
                 </div>
             </a>
             {% endfor %}
@@ -26,6 +26,7 @@
             <p style="font-weight: 650;" class="text-3xl mb-3">У вас нет профилей</p>
         </div>
         {% endif %}
+        {% if request.user.profiles.count < 5 %}
         <div class="flex justify-center items-center">
             <a href="{% url 'netflixapp:create_new_profile' %}">
                 <button class="px-4 py-2 rounded-md outline-none bg-gray-400 text-gray-100">
@@ -33,5 +34,10 @@
                 </button>
             </a>
         </div>
+        {% else %}
+        <div class="flex justify-center items-center">
+            <p>У вас максимальное кол-во профилей на аккаунте</p>
+        </div>
+        {% endif %}
     </section>
 {% endblock %}

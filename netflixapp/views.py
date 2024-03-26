@@ -30,6 +30,8 @@ def profile_list(request):
 
 @login_required
 def create_new_profile(request):
+    if request.user.profiles.count() >= 5:
+        return redirect('netflixapp:profiles')
     if request.method == 'POST':
         form = CreateNewProfileForm(request.POST)
         if form.is_valid():

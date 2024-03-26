@@ -12,24 +12,23 @@
                 <h1 class="text-4xl text-center text-gray-100 font-medium">
                     Создать профиль
                 </h1>
-                {% for field in form %}
                 <div class="my-4"> 
                     <Label class='text-lg text-gray-200 font-medium mb-3'>
-                        {{ field.label }}
+                        {{ form.name.label }}
                     </Label>
-                    {{ field }}
+                    {{ form.name }}
                 </div>
-                {% endfor %}
-<!--                <div class="my-4"> -->
-<!--                    <Label class='text-lg text-gray-200 font-medium mb-3'>-->
-<!--                        Maturity Level-->
-<!--                    </Label>-->
-<!--                    <select class="p-2 bg-gray-500 rounded-sm text-gray-200 outline-none block w-full"  name="profile_name" id="id_email" >-->
-<!--                        <option value="All">All</option>-->
-<!--                        <option value="Kids">Kids</option>-->
-<!--                       -->
-<!--                    </select>-->
-<!--                </div>-->
+
+                <div class="my-4">
+                    <Label class='text-lg text-gray-200 font-medium mb-3'>
+                        Ограничения
+                    </Label>
+                    <select class="p-2 bg-gray-500 rounded-sm text-gray-200 outline-none block w-full"  name="age_limit" id="age_limit" >
+                        <option value="All">All</option>
+                        <option value="Kids">Kids</option>
+
+                    </select>
+                </div>
                 <div class="flex justify-center items-center">
                     <button class="px-4 py-2 rounded-md outline-none bg-primary_red text-gray-100">Создать профиль</button>
                 </div>
