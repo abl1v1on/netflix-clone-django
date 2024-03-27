@@ -10,4 +10,5 @@ urlpatterns = [
     path('profiles/create-new-profile/', views.create_new_profile, name='create_new_profile'),
     path('movie-list/<str:profile_id>/', views.movie_list, name='movie_list'),
     path('movie/<str:movie_id>/', views.movie_detail, name='movie_detail'),
+    path('watch-movie/<str:movie_id>/', views.movie_watch, name='movie_watch'),
 ]

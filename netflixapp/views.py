@@ -63,6 +63,7 @@ def movie_list(request, profile_id):
     return render(request, 'movieList.html', context)
 
 
+@login_required
 def movie_detail(request, movie_id):
     movie = get_object_or_404(Movie, uuid=movie_id)
 
@@ -71,3 +72,14 @@ def movie_detail(request, movie_id):
         'movie': movie
     }
     return render(request, 'movieDetail.html', context)
+
+
+@login_required
+def movie_watch(request, movie_id):
+    movie = get_object_or_404(Movie, uuid=movie_id)
+
+    context = {
+        'title': f'Смотреть {movie.title}',
+        'movie': movie
+    }
+    return render(request, 'showMovie.html', context)

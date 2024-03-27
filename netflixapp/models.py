@@ -48,3 +48,6 @@ class Movie(models.Model):
 
 class Video(models.Model):
     content = models.FileField(upload_to='movies/')
+
+    def __str__(self):
+        return str(self.content)
