@@ -41,7 +41,9 @@
                 <div class="flex justify-center  items-center min-w-full  movie_lis">
                     {% for movie in movies %}
                     <div class="h-40 m-4 bg-blue-500 flex-shrink-0 rounded-md cursor-pointer w-40">
-                        <img src="{{ movie.cover.url }}" class="w-full h-full " alt="">
+                        <a href="{{ movie.get_absolute_url }}">
+                            <img src="{{ movie.cover.url }}" class="w-full h-full " alt="">
+                        </a>
                     </div>
                     {% endfor %}
                 </div>

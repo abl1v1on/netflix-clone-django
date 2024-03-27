@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 
+from django.urls import reverse
 
 AGE_LIMIT = (
     ('All', 'All'),
@@ -35,10 +36,14 @@ class Movie(models.Model):
     type = models.CharField(choices=MOVIE_CHOICES, max_length=10)
     video = models.ManyToManyField('Video', related_name='movie_content')
     cover = models.ImageField(upload_to='covers/')
+    poster = models.ImageField(upload_to='posters/', blank=True, null=True)
     age_limit = models.CharField(choices=AGE_LIMIT, max_length=10)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('netflixapp:movie_detail', kwargs={'movie_id': self.uuid})
 
 
 class Video(models.Model):
