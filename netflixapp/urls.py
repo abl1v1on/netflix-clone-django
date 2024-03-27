@@ -11,4 +11,6 @@ urlpatterns = [
     path('movie-list/<str:profile_id>/', views.movie_list, name='movie_list'),
     path('movie/<str:movie_id>/', views.movie_detail, name='movie_detail'),
     path('watch-movie/<str:movie_id>/', views.movie_watch, name='movie_watch'),
+
+    path('api/movie-list/', views.movie_list_api, name='api_movie_list'),
 ]

@@ -3,11 +3,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('netflixapp.urls', namespace='netflixapp')),
     path('user/', include('users.urls', namespace='user')),
+    path('api-auth/', include('rest_framework.urls'))
 ]
 
 if settings.DEBUG:

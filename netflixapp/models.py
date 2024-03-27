@@ -36,7 +36,7 @@ class Movie(models.Model):
     type = models.CharField(choices=MOVIE_CHOICES, max_length=10)
     video = models.ManyToManyField('Video', related_name='movie_content')
     cover = models.ImageField(upload_to='covers/')
-    poster = models.ImageField(upload_to='posters/', blank=True, null=True)
+    poster = models.ImageField(upload_to='posters/')
     age_limit = models.CharField(choices=AGE_LIMIT, max_length=10)
 
     def __str__(self):

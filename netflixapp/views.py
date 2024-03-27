@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Profile, Movie
 from .forms import CreateNewProfileForm
+from .serializers import MovieSerializer
 
 
 def index(request):
@@ -83,3 +85,4 @@ def movie_watch(request, movie_id):
         'movie': movie
     }
     return render(request, 'showMovie.html', context)
+
