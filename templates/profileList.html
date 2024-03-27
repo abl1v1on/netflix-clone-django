@@ -13,7 +13,7 @@
         {% if profiles %}
         <div class="flex flex-wrap justify-center items-center w-10/12  md:w-6/12">
             {% for profile in profiles %}
-            <a href="">
+            <a href="{% url 'netflixapp:movie_list' profile.uuid %}">
                 <div class="w-32 h-32 m-4  bg-blue-500 rounded-md cursor-pointer justify-center items-center flex-col flex">
                     <p style="font-weight: 650;" class="text-6xl">{{ profile.name.0 }}</p>
                     <p>{{ profile.name|truncatechars:14 }}</p>

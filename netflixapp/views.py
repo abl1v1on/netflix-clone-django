@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
-from .models import Profile
+from .models import Profile, Movie
 from .forms import CreateNewProfileForm
 
 
@@ -46,3 +46,17 @@ def create_new_profile(request):
         'title': 'Создать новый профиль'
     }
     return render(request, 'profileCreate.html', context)
+
+
+@login_required
+def movie_list(request, profile_id):
+    profile = get_object_or_404(Profile, uuid=profile_id)
+    if profile not in request.user.profiles.all():
+        return redirect('netflixapp:home')
+    movies = Movie.objects.filter(age_limit=profile.age_limit)
+
+    context = {
+        'title': 'Список фильмов',
+        'movies': movies
+    }
+    return render(request, 'movieList.html', context)

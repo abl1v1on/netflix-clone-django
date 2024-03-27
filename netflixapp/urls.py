@@ -8,5 +8,5 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('profiles/', views.profile_list, name='profiles'),
     path('profiles/create-new-profile/', views.create_new_profile, name='create_new_profile'),
+    path('movie-list/<str:profile_id>/', views.movie_list, name='movie_list'),
 ]
-
